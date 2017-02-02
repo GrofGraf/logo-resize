@@ -1,0 +1,1 @@
+Logo resize on scroll down
