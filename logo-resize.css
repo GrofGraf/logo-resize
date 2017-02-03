@@ -1,0 +1,8 @@
+#logo{
+	height:150px;
+	-webkit-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+#logo.shrink{
+	height:80px;
+}

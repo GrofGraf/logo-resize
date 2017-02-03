@@ -1,19 +1,13 @@
-initNavbar(150, 100, 0.25);
-window.addEventListener("resize", function(){
-	initNavbar(150, 100, 0.25);
-});
-
-function initNavbar(defaultSize, finalSize, resizeSpeed){
-	navbarScroll(defaultSize, finalSize, resizeSpeed);
-	document.addEventListener("scroll", function(){
-		navbarScroll(defaultSize, finalSize, resizeSpeed);
-	});
-}
-
-function navbarScroll(defaultSize, finalSize, resizeSpeed){
+navbarScroll();
+document.addEventListener("scroll", navbarScroll);
+document.addEventListener("touchmove", navbarScroll);
+function navbarScroll(){
 	var logo = document.getElementById("logo");
 	position = window.pageYOffset || document.body.scrollTop;
-	if(position == 0) logo.style = "height:" + defaultSize + "px;";
-	if(position > 0) logo.style = "height:" + (defaultSize - position * resizeSpeed) + "px;";
-	if(position > (defaultSize - finalSize) / resizeSpeed) logo.style = "height:" + finalSize + "px;"
+	if(position>60 && !logo.classList.contains("shrink")){
+		logo.classList.add("shrink");
+	}
+	if(position<=60 && logo.classList.contains("shrink")){
+		logo.classList.remove("shrink");
+	}
 }
